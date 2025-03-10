@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 구글아이콘 -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=stylus_note" />
+    <!-- 구글폰트 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dongle&family=Jua&family=Shadows+Into+Light&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="memo.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="title-wrap">
+        <h1>MEMO</h1>
+        <span class="material-symbols-outlined">
+            stylus_note
+        </span>
+    </div>
+    <div class="box">
+        <div class="memo">
+            <textarea class="text" id='text'></textarea>
+            <div class="optionbox">
+                <button class="save">SAVE</button>
+                <button class="remove">remove</button>
+                <button class="BgChange">COLOR</button>
+                <input type="color" class="color">
+                
+            </div>
+        </div>
+        <div>
+            <ul id="memos">
+                <h2>Memo List</h2>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // document.addEventListener("DOMContentLoaded", () => {
+        //     if (localStorage.length > 0) {
+        //         for (let i = 0; i < localStorage.length; i++) {
+        //             const key = localStorage.key(i);
+        //             let addLi = document.createElement("li")
+        //             addLi.innerText = key;
+        //             memos.appendChild(addLi)
+        //         }
+        //     }
+        // })
+
+        const text = document.querySelector('.text');
+        const btnSave = document.querySelector('.save')
+        const btnRoad = document.querySelector('.road')
+        const memos = document.querySelector('#memos')
+        const btnRmv = document.querySelector('.remove');
+
+        btnSave.addEventListener('click', function () {
+            if (confirm("저장하시겠습니까?")) {
+                title = prompt('제목을 입력해주세요')
+                localStorage.setItem(title, text.value)
+                let liEl = document.createElement("li");
+                liEl.textContent = title;
+                liEl.addEventListener('click', (e) => {
+                    console.log(e.target.innerText)
+                    if (confirm("기존 내용이 덮어씌워집니다. 불러오시겠습니까?")) {
+                        const clicked = e.target.innerText
+                        text.value = localStorage.getItem(clicked)
+                    }
+                })
+                memos.appendChild(liEl)
+            }
+        })
+
+        const btnBgChg = document.querySelector('.BgChange');
+        const color = document.querySelector('.color');
+
+        btnBgChg.addEventListener('click', function () {
+            color.classList.toggle("showBg")
+        })
+        color.addEventListener('input', function () {
+            text.style.backgroundColor = color.value
+        })
+
+        btnRmv.addEventListener('click', function () {
+            if (confirm("삭제하시겠습니까?")) {
+                title = prompt('삭제하실 제목을 입력해주세요');
+                console.log(title)
+                if (title) {
+                    document.querySelectorAll("li").forEach(el => {
+                        if (el.textContent.includes(title)) {
+                            console.log(el)
+                            el.remove()
+                            localStorage.removeItem(title);
+                            document.getElementById('text').value='';
+                        }
+                    });
+                }
+
+
+            }
+        })
+
+        // //--------글꼴 변경---------//
+        // function change_Gung() {
+        //     document.getElementsByClassName("text").style.fontFamily = "궁서", Gungsuh, Arial, sans - serif;
+
+        // }
+
+        // function change_Gul() {
+        //     document.getElementsByClassName("text").style.fontFamily = "굴림", Gulim, Arial, sans - serif;
+        // }
+
+        // function change_Na() {
+        //     document.getElementsByClassName("text").style.fontFamily = "나눔 고딕", NanumGothic, Arial, sans - serif;
+        // }
+
+        // function reset() {
+        //     document.getElementsByClassName("text").style.fontFamily = "initial";
+        // }
+        // //--------폰트 크기 변경---------//
+        // function font5() {
+        //     document.getElementsByClassName("text").style.fontSize = "5px";
+        // }
+
+        // function font20() {
+        //     document.getElementsByClassName("text").style.fontSize = "20px";
+        // }
+
+        // function font50() {
+        //     document.getElementsByClassName("text").style.fontSize = "50px";
+        // }
+
+        // function reset_size() {
+        //     document.getElementsByClassName("texts").style.fontSize = "initial";
+        // }
+    </script>
+</body>
+
+</html>

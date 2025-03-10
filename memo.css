@@ -1,0 +1,113 @@
+body{
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    padding-top: 100px;
+    flex-direction: column;
+    align-items: center;
+    background-image: url('watercolor-paper-texture.jpg');
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+}
+
+h1{
+    font-family: "Shadows Into Light", cursive;
+    font-size: 50px;
+    margin: 0;
+}
+
+.title-wrap{
+    width: 700px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+}
+.material-symbols-outlined{
+    padding-top: 5px;
+}
+
+.box{
+    display: flex;
+    gap: 70px;
+    background-color: #fff;
+    border-radius: 15px ;
+    padding: 30px;
+    border: 1px solid #333;
+}
+
+.memo{
+    width: 400px;
+    height: 450px;
+   
+}
+.text{
+    width: 100%;
+    height: 80%;
+    resize: none;
+    outline: none;
+    border-color: #888; 
+    border-radius: 10px;
+    padding: 10px;
+
+}
+button{
+    margin-top: 30px;
+}
+
+.dark{
+    background-color: rgb(94, 94, 94);
+}
+
+.showBg{
+    display:none;
+}
+
+li{
+    list-style: none;
+    padding-top: 10px;
+    font-size: 18px;
+    color: #888;
+    font-family: "Jua", sans-serif;
+}
+#memos{
+    display: flex;
+    padding: 0;
+    width: 200px;
+    margin: 0;
+    flex-direction: column;
+    color: #333;
+    
+}
+h2{
+    margin: 0;
+    font-family: "Shadows Into Light", cursive;
+}
+.optionbox{
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    height: 50px;
+}
+button{
+    margin: 0;
+    flex: 1;
+    height: 100%;
+    background-color: #333;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-weight: 600;
+    font-size: 15px;
+    font-family: "Shadows Into Light", cursive;
+}
+.save:hover{
+    background-color: #666;
+    transition: 0.3s;
+}
+input{
+    height: 100%;
+}
